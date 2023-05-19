@@ -1,18 +1,30 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
-#game{
-    width: 500px;
-    height: 200px;
-    border: 1px solid black;
+body{
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: white;
+
 }
-#personagem{
-    width: 20px;
-    height: 50px;
-    background-color: purple;
+.game{
+    border-bottom: 1px solid;
+    width: 300px;
+    height: 800px;
     position: relative;
-    top: 150px;
+    overflow: hidden;
+}
+.dinossauro{
+    width: 280px;
+    height: 130px;
+    background-image: url(png-transparent-dino-t-rex-runner-tyrannosaurus-dino-chrome-dinosaur-game-angle-white.png);
+    bottom: 0;
+    position: absolute;
+   
 }
 .animar{
     animation: personagem 500ms infinite ;
@@ -26,7 +38,7 @@
     
     
 }
-#quadrado{
+.cacto{
     width: 20px;
     height: 20px;
     background-color: black;
@@ -38,4 +50,11 @@
 @keyframes quadrado{
     0%{left: 480px;}
     100%{left: -40px;}
+}
+
+.Score{
+    position: absolute;
+    top: 30px;
+    left: 0;
+    font-size: x-large;
 }

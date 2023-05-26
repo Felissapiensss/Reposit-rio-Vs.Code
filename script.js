@@ -1,28 +1,35 @@
-let personagem =document.querySelector('#personagem')
-let quadrado =document.querySelector('#quadrado')
+const Dino = document.querySelector(".Dino");
+const Kacto = document.querySelector(".Kacto");
+const Score = document.querySelector(".Score");
+let alreadyJump = false;
+let count = 0;
 
-function pular(){
-    if (personagem.classList != 'animar'){
-         personagem.classList.add('animar')
-    }
-    setTimeout(function(){
-        personagem.classList.remove('animar')
-    },500)
-
+document.addEventListener("keydown" ,(e) =>{
+if((e.code==="ArrowUp") | (e.code==="Space")){
+    jump()
 }
-var testarColisao = setInterval(function(){
-
-    var topoPersonagem = parseInt(
-        window.getComputedStyle(personagem).getPropertyValue('top')
-    )
-    var EsquerdaQuadrado = parseInt(
-        window.getComputedStyle(quadrado).getPropertyValue('left')
-    )
-
-    if(EsquerdaQuadrado < 20 && EsquerdaQuadrado > 0 && topoPersonagem >= 130){
-        
-        quadrado.style.animation = 'none'
-        quadrado.style.display ='none'
-        alert('Você perdeu!')
+});
+ function jump(){
+    if(!Dino.classList.contains("jump")){
+        Dino.classList.add("jump");
+        alreadyJump=true
+        setTimeout(() => {
+            Dino.classList.remove("jump");
+            alreadyJump=false
+        },1100)
     }
-},10)
+ }
+ setInterval(() =>{
+    let Dinobottom = parseInt(
+        window.getComputedStyle(Dino).getPropertyValue("bottom")
+    );
+    let Kactobottom = parseInt(
+        window.getComputedStyle(Kacto).getPropertyValue("bottom")
+    );
+    if(Kactoleft > 40 && Kactoleft < 270 && Dinobottom <=50 && !alreadyJump){
+        alert(`Game Over! Seu Score Foi:${count}`);
+        count = 0;
+    }
+    count++;
+    Score.innerHTML = `SCORE: ${count}`;
+ },10)
